@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/stores'
-import { router } from '@/router'
+import router from '@/router'
 const baseURL = 'http://big-event-vue-api-t.itheima.net'
 
 const instance = axios.create({

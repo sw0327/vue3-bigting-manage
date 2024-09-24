@@ -13,6 +13,8 @@
     "lint-staged": "lint-staged"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "@vueup/vue-quill": "^1.2.0",
     "axios": "^1.7.7",
     "element-plus": "^2.8.2",
     "pinia": "^2.1.7",
@@ -38,5 +40,10 @@
     "*.{js,ts,vue}": [
       "eslint --fix"
     ]
+  },
+  "pnpm": {
+    "overrides": {
+      "quill": "2.0.2"
+    }
   }
 }

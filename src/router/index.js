@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+import { useUserStore } from '@/stores'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -10,14 +10,14 @@ const router = createRouter({
     {
       path: '/',
       component: () => import('@/views/layout/LayoutContainer.vue'),
-      redirect: '/artical/manage',
+      redirect: '/article/manage',
       children: [
         {
-          path: '/artical/manage',
+          path: '/article/manage',
           component: () => import('@/views/artical/ArticalManage.vue')
         },
         {
-          path: '/artical/channel',
+          path: '/article/channel',
           component: () => import('@/views/artical/ArticalChannel.vue')
         },
         {
@@ -35,6 +35,13 @@ const router = createRouter({
       ]
     }
   ]
+})
+
+router.beforeEach((to) => {
+  const userStore = useUserStore()
+  if (!userStore.token && to.path != '/login') {
+    return '/login'
+  }
 })
 
 export default router
